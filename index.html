@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safwan Ziani | Développeur Fullstack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-main: #94a3b8;
+            --text-light: #f8fafc;
+            --accent: #38bdf8; /* Bleu cyan moderne */
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --glass: blur(12px) saturate(180%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.08) 0%, transparent 25%);
+        }
+
+        /* --- TYPOGRAPHIE --- */
+        h1, h2, h3 { color: var(--text-light); line-height: 1.1; }
+        .mono { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 120px 0; }
+
+        /* --- HEADER (GLASSMORPHISM) --- */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: var(--glass);
+            -webkit-backdrop-filter: var(--glass);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-light); }
+        .logo span { color: var(--accent); }
+        
+        nav ul { display: flex; gap: 40px; list-style: none; }
+        nav a { 
+            color: var(--text-light); font-size: 0.95rem; font-weight: 500; 
+            position: relative; padding-bottom: 5px;
+        }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background: var(--accent); transition: 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+
+        /* --- HERO SECTION --- */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+        .hero-content h1 { font-size: 5rem; margin: 20px 0; letter-spacing: -2px; }
+        .hero-content h3 { font-size: 2rem; margin-bottom: 30px; opacity: 0.8; }
+        .hero-content p { max-width: 600px; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.8; }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%;
+            background: var(--accent); z-index: -1; transition: 0.3s;
+        }
+        .btn:hover { color: var(--bg-dark); }
+        .btn:hover::before { width: 100%; }
+
+        /* --- SKILLS (TAGS) --- */
+        .skills-wrapper { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .skill-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* --- PROJETS (CARDS) --- */
+        .section-header { margin-bottom: 80px; }
+        .section-header h2 { font-size: 3rem; display: inline-block; position: relative; }
+        .section-header h2::before {
+            content: '01.'; font-family: 'JetBrains Mono'; font-size: 1.5rem;
+            color: var(--accent); position: absolute; top: -20px; left: 0;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+        /* Effet "Featured" pour le dernier projet */
+        .project-card.featured {
+            background: linear-gradient(160deg, rgba(30,41,59,0.9) 0%, rgba(15,23,42,0.95) 100%);
+            border: 1px solid var(--accent);
+        }
+        
+        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
+        .folder-icon { font-size: 3rem; color: var(--accent); }
+        .links a { font-size: 1.4rem; color: var(--text-light); margin-left: 15px; transition: 0.3s; }
+        .links a:hover { color: var(--accent); }
+
+        .project-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-light); }
+        .project-desc { font-size: 1rem; margin-bottom: 25px; color: var(--text-main); }
+        
+        .tech-list { display: flex; gap: 15px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-main); margin-top: auto; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 50px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-main); }
+
+        /* --- ANIMATIONS (Scroll Reveal) --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            nav { display: none; } /* Idéalement ajouter un menu burger ici */
+            .section-header h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">S<span>Z</span>.</div>
+            <nav>
+                <ul>
+                    <li><a href="#about"><span class="mono">01.</span> À propos</a></li>
+                    <li><a href="#projects"><span class="mono">02.</span> Projets</a></li>
+                    <li><a href="#contact"><span class="mono">03.</span> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content reveal">
+                <p class="mono">Salut, je m'appelle</p>
+                <h1>Safwan Ziani.</h1>
+                <h3 class="gradient-text">Je conçois des architectures logicielles et web.</h3>
+                <p>
+                    Étudiant en BUT Informatique à l'Université Paris-Saclay. Je construis des solutions complètes, de la base de données à l'interface utilisateur, avec une attention particulière pour l'optimisation et l'algorithmique.
+                    <br><br>
+                    <span style="color: var(--accent)">Actuellement à la recherche d'une alternance.</span>
+                </p>
+                <a href="mailto:ziani.safwan@gmail.com" class="btn">Me contacter</a>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <div class="section-header reveal">
+                <h2>Projets Réalisés</h2>
+            </div>
+
+            <div class="project-card featured reveal">
+                <div class="card-top">
+                    <i class="far fa-folder-open folder-icon"></i>
+                    <div class="links">
+                        <a href="#" title="Voir le code"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3 class="project-title">Plateforme de Constitution de Groupes (SaaS)</h3>
+                <div class="project-desc">
+                    <p>
+                        Solution complète pour la gestion académique permettant de générer automatiquement des groupes de TD/TP optimisés.
+                    </p>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li>🚀 <strong>Algorithmique :</strong> Implémentation d'algos gloutons et force brute pour minimiser les écarts de niveau.</li>
+                        <li>⚙️ <strong>Architecture :</strong> Client lourd (Java Swing) communiquant via une API REST avec un serveur Web.</li>
+                        <li>💾 <strong>Data :</strong> Base SQL complexe avec triggers PL/SQL pour l'automatisation.</li>
+                    </ul>
+                </div>
+                <div class="tech-list">
+                    <span>Java</span>
+                    <span>PHP (API REST)</span>
+                    <span>SQL/PLSQL</span>
+                    <span>UML</span>
+                </div>
+            </div>
+
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                
+                <div class="project-card reveal">
+                    <div class="card-top">
+                        <i class="far fa-folder folder-icon"></i>
+                        <div class="links"><a href="#"><i class="fab fa-github"></i></a></div>
+                    </div>
+                    <h3 class="project-title">Gestion de Logements (CIUP)</h3>
+                    <p class="project-desc">
+                        Application Java développée avec une architecture MVC stricte. Gestion interactive des résidents et interface graphique (GUI) ergonomique.
+                    </p>
+                    <div class="tech-list">
+                        <span>Java</span>
+                        <span>MVC</span>
+                        <span>Swing</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="card-top">
+                        <i class="far fa-folder folder-icon"></i>
+                        <div class="links"><a href="#"><i class="fas fa-external-link-alt"></i></a></div>
+                    </div>
+                    <h3 class="project-title">Portfolio & Web Design</h3>
+                    <p class="project-desc">
+                        Développement front-end moderne axé sur l'expérience utilisateur (UX) et le responsive design.
+                    </p>
+                    <div class="tech-list">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JS</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <div class="section-header reveal">
+                <h2>Mon Arsenal Technique</h2>
+            </div>
+            <div class="reveal" style="max-width: 800px;">
+                <p style="margin-bottom: 20px;">
+                    J'aborde chaque projet avec une vision d'ingénierie : analyser, concevoir, puis coder. Voici les technologies que je maîtrise :
+                </p>
+                <div class="skills-wrapper">
+                    <span class="skill-tag">Java (POO & Algo)</span>
+                    <span class="skill-tag">PHP / API REST</span>
+                    <span class="skill-tag">SQL & PL/SQL</span>
+                    <span class="skill-tag">HTML & CSS Moderne</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">UML & Merise</span>
+                    <span class="skill-tag">Méthodes Agiles</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p class="mono" style="color: var(--accent);">03. Et maintenant ?</p>
+            <h2 style="font-size: 3rem; margin: 20px 0;">On discute ?</h2>
+            <p style="margin-bottom: 40px;">
+                Je suis activement à la recherche d'une alternance ou de collaborations sur des projets techniques. Ma boîte de réception est toujours ouverte !
+            </p>
+            <a href="mailto:ziani.safwan@gmail.com" class="btn">Envoyer un message</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 20px; font-size: 1.5rem;">
+                <a href="https://linkedin.com/in/safwan-ziani" style="color: var(--text-main); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/SafwanZ" style="color: var(--text-main); margin: 0 10px;"><i class="fab fa-github"></i></a>
+            </div>
+            <p>Conçu et développé par Safwan Ziani © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Déclencher une fois au chargement
+        reveal();
+    </script>
+</body>
+</html>
