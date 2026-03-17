@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safwan Ziani — Projets</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient"></div>
+
+    <header>
+        <a href="index.html" class="logo">Safwan <span class="logo-accent">Ziani</span></a>
+        <nav>
+            <a href="index.html" class="tab-btn">Accueil</a>
+            <a href="projets.html" class="tab-btn active">Projets</a>
+            <a href="skills.html" class="tab-btn">Skills</a>
+            <a href="contact.html" class="tab-btn">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a href="https://www.linkedin.com/in/safwan-ziani-2376b3331/" target="_blank" class="linkedin-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <div class="availability">
+                <span class="pulse"></span>
+                <span>Disponible en alternance</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="inner-layout page-enter">
+            <div class="page-hero">
+                <p class="page-eyebrow">// projets & parcours</p>
+                <h2 class="page-title">Ce que j'ai <em>construit.</em></h2>
+            </div>
+
+            <div class="projects-wrapper">
+                <!-- Colonne projets -->
+                <div class="projects-list">
+
+                    <div class="project-card">
+                        <div class="project-tags-row">
+                            <span class="tag">Java OOP</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">API REST</span>
+                            <span class="tag">Algorithmique</span>
+                        </div>
+                        <h3>Plateforme de Constitution de Groupes</h3>
+                        <p class="project-subtitle">Application SaaS · Architecture REST MVC</p>
+                        <p class="project-desc">
+                            Développement d'une application d'assistance à la création de groupes de TD/TP pour des promotions de 100+ étudiants. Respect de contraintes complexes : niveaux académiques, proportions de genre et covoiturages.
+                        </p>
+                        <p class="project-detail-title">Moteur algorithmique</p>
+                        <ul class="project-ul">
+                            <li>Génération manuelle ou automatique des groupes</li>
+                            <li>Algorithmes gloutons et force brute en Java pour optimiser des scores d'équilibrage</li>
+                            <li>Minimisation du score M+N (écart de moyenne + étudiants sans entreprise)</li>
+                        </ul>
+                        <p class="project-detail-title">Architecture technique</p>
+                        <ul class="project-ul">
+                            <li>Infrastructure REST séparant modèle, vue et contrôleur</li>
+                            <li>Client lourd Java communiquant avec un serveur PHP via HTTP / JSON</li>
+                        </ul>
+                    </div>
+
+                    <div style="height: 16px;"></div>
+
+                    <div class="project-card">
+                        <div class="project-tags-row">
+                            <span class="tag">SQL / PL-SQL</span>
+                            <span class="tag">MERISE</span>
+                            <span class="tag">UML</span>
+                            <span class="tag">Triggers</span>
+                        </div>
+                        <h3>Ingénierie & Architecture de Base de Données</h3>
+                        <p class="project-subtitle">Cycle complet de la donnée · Modélisation → Déploiement</p>
+                        <p class="project-desc">
+                            Prise en charge complète du cycle de vie de la donnée, de l'analyse des besoins fonctionnels jusqu'au déploiement dynamique.
+                        </p>
+                        <ul class="project-ul">
+                            <li><strong style="color:var(--text)">Analyse :</strong> Dictionnaire des données, GDF et MCD via la méthode MERISE</li>
+                            <li><strong style="color:var(--text)">Implémentation :</strong> Scripts automatisés de création de tables, jeux de tests réalistes</li>
+                            <li><strong style="color:var(--text)">Dynamisme :</strong> Triggers et fonctions PL/SQL directement sur le serveur de BDD</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Colonne parcours -->
+                <div>
+                    <div class="sidebar-section">
+                        <p class="section-label">// Parcours académique</p>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <p class="tl-date">2024 — Présent</p>
+                                <p class="tl-title">BUT Informatique</p>
+                                <p class="tl-org">Université Paris-Saclay</p>
+                                <p class="tl-desc">
+                                    Spécialisation en réalisation et conception d'applications. POO, mathématiques appliquées, gestion de projets agiles.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="tl-date">2021 — 2024</p>
+                                <p class="tl-title">Baccalauréat Général</p>
+                                <p class="tl-org">Lycée Edmond Michelet</p>
+                                <p class="tl-desc">
+                                    Spécialités Mathématiques et Physique-Chimie. Obtenu avec <strong style="color:var(--accent)">Avec mention</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="section-label">// Infos pratiques</p>
+                        <div style="display:flex;flex-direction:column;gap:10px;">
+                            <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.8rem;color:var(--text-soft);">
+                                <i class="fas fa-map-marker-alt" style="color:var(--accent);width:16px;"></i> Essonne (91) · Permis B
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.8rem;color:var(--text-soft);">
+                                <i class="fas fa-language" style="color:var(--accent);width:16px;"></i> Anglais B2 · Français natif
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.8rem;color:var(--text-soft);">
+                                <i class="fas fa-satellite-dish" style="color:var(--accent);width:16px;"></i> Recherche alternance 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span class="footer-copy">© 2025 Safwan Ziani</span>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/safwan-ziani-2376b3331/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:ziani.safwan@gmail.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </footer>
+</body>
+</html>

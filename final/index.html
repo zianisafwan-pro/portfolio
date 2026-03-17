@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safwan Ziani — Développeur</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient"></div>
+
+    <header>
+        <a href="index.html" class="logo">Safwan <span class="logo-accent">Ziani</span></a>
+        <nav>
+            <a href="index.html" class="tab-btn active">Accueil</a>
+            <a href="projets.html" class="tab-btn">Projets</a>
+            <a href="skills.html" class="tab-btn">Skills</a>
+            <a href="contact.html" class="tab-btn">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a href="https://www.linkedin.com/in/safwan-ziani-2376b3331/" target="_blank" class="linkedin-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <div class="availability">
+                <span class="pulse"></span>
+                <span>Disponible en alternance</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="home-layout">
+            <!-- Texte -->
+            <div class="home-left">
+                <p class="eyebrow">>>> Bienvenue</p>
+                <h1 class="hero-name">
+                    Safwan<br>
+                    <em>Ziani.</em>
+                </h1>
+                <p class="hero-role">Étudiant BUT Informatique · Paris-Saclay</p>
+                <p class="hero-desc">
+                    Je conçois des architectures logicielles robustes et des bases de données complexes.
+                    Passionné par les systèmes bien pensés, de la modélisation MERISE à l'API REST.
+                </p>
+                <div class="hero-cta">
+                    <a href="projets.html" class="btn-primary">Voir mes projets <i class="fas fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn-outline">Me contacter</a>
+                </div>
+            </div>
+
+            <!-- Portrait -->
+            <div class="home-portrait">
+                <div class="portrait-wrapper">
+                    <img src="portrait (1).png" alt="Safwan Ziani" class="portrait-img">
+                    <div class="portrait-badge">
+                        <span class="pulse" style="width:6px;height:6px;"></span>
+                        <span>Open to work</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code card -->
+            <div class="home-right">
+                <div class="code-card">
+                    <div class="code-card-header">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                        <span class="code-filename">SafwanZiani.java</span>
+                    </div>
+                    <div class="code-body">
+<pre><code><span class="kw">public class</span> <span class="cls">SafwanZiani</span> {
+
+  <span class="kw">private final</span> String formation =
+    <span class="str">"BUT Informatique 2ème année"</span>;
+
+  <span class="kw">private</span> String[] competences = {
+    <span class="str">"Java OOP"</span>, <span class="str">"PHP / REST"</span>,
+    <span class="str">"SQL / PL-SQL"</span>, <span class="str">"C++"</span>
+  };
+
+  <span class="kw">public</span> String <span class="fn">getStatus</span>() {
+    <span class="kw">return</span> <span class="str">"Recherche alternance"</span>;
+  }
+
+  <span class="kw">public boolean</span> <span class="fn">isMotivated</span>() {
+    <span class="kw">return true</span>; <span class="cmt">// toujours ✓</span>
+  }
+}</code></pre>
+                    </div>
+                    <div class="code-footer">
+                        <div class="stat-item">
+                            <span class="stat-val">2</span>
+                            <span class="stat-label">Ans BUT</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val">4+</span>
+                            <span class="stat-label">Langages</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-val">B2</span>
+                            <span class="stat-label">Anglais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span class="footer-copy">© 2025 Safwan Ziani</span>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/safwan-ziani-2376b3331/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:ziani.safwan@gmail.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </footer>
+</body>
+</html>
