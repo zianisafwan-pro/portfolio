@@ -578,6 +578,11 @@ main {
     gap: 2px;
 }
 
+/* Groupe pleine largeur (soft skills) */
+.skill-group-full {
+    grid-column: 1 / -1;
+}
+
 .skill-group {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -622,25 +627,99 @@ main {
 }
 .skill-pill i { font-size: 0.9rem; color: var(--accent); }
 
+/* Soft skills — teinte légèrement différente */
+.skill-pill.soft {
+    color: var(--text-soft);
+    border-color: rgba(255,255,255,0.06);
+}
+.skill-pill.soft i { color: var(--text-muted); }
+.skill-pill.soft:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+}
+.skill-pill.soft:hover i { color: var(--text-soft); }
+
 /* ─── CONTACT PAGE ─── */
-.contact-layout {
+.contact-simple-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 32px;
     align-items: start;
+    max-width: 860px;
 }
 
-.contact-info { }
+.contact-block { display: flex; flex-direction: column; gap: 16px; }
 
-.contact-headline {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    color: var(--white);
-    line-height: 1.15;
-    margin-bottom: 20px;
+.contact-block-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
 }
-.contact-headline em { font-style: italic; color: var(--accent); }
+
+/* CV card */
+.cv-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+.cv-card:hover { border-color: var(--border-hover); }
+.cv-card-icon {
+    width: 40px; height: 40px;
+    min-width: 40px;
+    background: var(--accent-dim);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+.cv-card-info {
+    flex: 1;
+    min-width: 0;
+}
+.cv-card-title {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--text);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cv-card-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.cv-dl-btn {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #080808;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+.cv-dl-btn:hover { background: #fff; }
 
 .contact-body-text {
     font-size: 0.95rem;
@@ -701,102 +780,7 @@ main {
     transform: translateX(4px);
 }
 
-/* ─── CONTACT FORM ─── */
-.contact-form-card {
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 40px;
-}
-
-.form-title {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    color: var(--white);
-    margin-bottom: 28px;
-}
-
-.form-group { margin-bottom: 20px; }
-
-.form-label {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-    resize: none;
-}
-.form-input::placeholder,
-.form-textarea::placeholder { color: var(--text-muted); }
-.form-input:focus,
-.form-textarea:focus {
-    border-color: var(--border-hover);
-    background: rgba(0,220,200,0.03);
-}
-
-.form-textarea { height: 120px; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-.form-submit {
-    width: 100%;
-    background: var(--accent);
-    color: #080808;
-    font-family: var(--sans);
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s;
-    letter-spacing: 0.01em;
-    margin-top: 8px;
-}
-.form-submit:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,220,200,0.2); }
-
-/* ─── CV DOWNLOAD SECTION ─── */
-.cv-section {
-    margin-top: 24px;
-    padding: 24px;
-    background: var(--accent-dim);
-    border: 1px solid rgba(0,220,200,0.2);
-    border-radius: 8px;
-}
-.cv-section-label {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-.cv-desc {
-    font-size: 0.84rem;
-    color: var(--text-soft);
-    margin-bottom: 16px;
-    line-height: 1.6;
-}
+/* ─── SETUP BANNER (kept for reference, unused) ─── */
 .cv-download-btn {
     display: inline-flex;
     align-items: center;
@@ -814,6 +798,49 @@ main {
     border: none;
 }
 .cv-download-btn:hover { background: #fff; transform: translateY(-1px); }
+
+/* ─── SETUP BANNER (EmailJS) ─── */
+.setup-banner {
+    background: rgba(255, 193, 7, 0.05);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+}
+.setup-banner-title {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: #ffc107;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+.setup-steps {
+    list-style: decimal;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.setup-steps li {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+.setup-steps a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.setup-steps code {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: #ffc107;
+}
+.setup-steps strong { color: var(--text); }
 
 /* ─── FOOTER LINE ─── */
 footer {
@@ -859,7 +886,7 @@ footer {
     .inner-layout { padding: 48px 24px; }
     .projects-wrapper { grid-template-columns: 1fr; }
     .skills-wrapper { grid-template-columns: 1fr; }
-    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+    .contact-simple-layout { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
 }
